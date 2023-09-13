@@ -1,10 +1,13 @@
 import React from 'react';
-import { Radio, Button } from 'antd';
+import { Radio, Button, Input } from 'antd';
 import type { RadioChangeEvent } from 'antd';
+
+const { TextArea } = Input; // Extract TextArea from Input
 
 const onChange = (e: RadioChangeEvent) => {
   console.log(`radio checked:${e.target.value}`);
 };
+
 
 const SearchContent = () => {
   return (
@@ -14,12 +17,21 @@ const SearchContent = () => {
       <div style={{ flex: 3, paddingRight: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
         
         {/* Mass */}
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+         {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <div style={{ flex: 1, fontWeight: 'bold', color: '#00720a', fontSize: '16px' }}>Mass</div>
           <div style={{ flex: 2 }}>
             <input type="text" placeholder="Enter m/z" style={{ fontSize: '16px', width: '60%' }} />
           </div>
+        </div> */}
+
+        {/* Mass */}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <div style={{ flex: 1, fontWeight: 'bold', color: '#00720a', fontSize: '16px' }}>Mass</div>
+          <div style={{ flex: 2 }}>
+            <TextArea rows={4} placeholder="one feature (m/z) per line" style={{ fontSize: '16px', width: '60%' }} /> {/* Use TextArea here */}
+          </div>
         </div>
+
         
         {/* Tolerance */}
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
@@ -49,15 +61,18 @@ const SearchContent = () => {
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
           <div style={{ flex: 1, fontWeight: 'bold', color: '#00720a', fontSize: '16px' }}>Adduct Type</div>
           <div style={{ flex: 2 }}>
+            <br />
             <input type="radio" name="adduct" value="neutral" /> Neutral
+            <input type="radio" name="adduct" value="m-h" /> [M-H]-
             <br />
             <input type="radio" name="adduct" value="m+h" /> [M+H]+
             <input type="radio" name="adduct" value="m+na" /> [M+Na]+
+            <input type="radio" name="adduct" value="m+k" /> [M+K]+
+            <input type="radio" name="adduct" value="m+nh4" /> [M+NH4]+
             <br />
-            <input type="radio" name="adduct" value="m-h" /> [M-H]-
             <br />
             <br />
-            <br />
+            
           </div>
         </div>
         

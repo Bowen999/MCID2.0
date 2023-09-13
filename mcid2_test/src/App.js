@@ -13,6 +13,11 @@ import Search2 from './Search2';  // Assuming MCIDxPlant is mapped to Search2.js
 import Tutorial from './Tutorial';
 import Contact from './Contact';
 import Home from './Home';
+import CIL from './About/CIL';
+import PossibleReactions from './About/Rxns';
+import Services from './About/Services';
+
+
 
 const { Header, Content } = Layout;
 
@@ -26,7 +31,11 @@ const App: React.FC = () => {
             top: 0,
             zIndex: 1,
             width: '100%',
+            // put menu at right
+            justifyContent: 'flex-end',
             display: 'flex',
+            // set backgroundColor to white
+            backgroundColor: '#fff',
             alignItems: 'center',
           }}
         >
@@ -35,6 +44,8 @@ const App: React.FC = () => {
             theme="light"
             mode="horizontal"
             defaultSelectedKeys={['1']}
+            // set the sleected menu item color to lime
+            style={{ backgroundColor: '#fff', color: 'black' }}
           >
             <Menu.Item key="1">
               <Link to="/">Home</Link>
@@ -58,9 +69,6 @@ const App: React.FC = () => {
         </Header>
         <Content className="site-layout" style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>
-              <Link to="/">Home</Link>
-            </Breadcrumb.Item>
             {/* ... other breadcrumb items as needed ... */}
           </Breadcrumb>
           <div style={{ padding: 24, minHeight: 380 }}>
@@ -71,6 +79,12 @@ const App: React.FC = () => {
               <Route path="/about" element={<Intro />} />
               <Route path="/tutorial" element={<Tutorial />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/About/CIL" element={<CIL />} />
+              <Route path="/About/reaction" element={<PossibleReactions />} />
+              <Route path="/About/serverse" element={<Serverse />} />
+              <Route path="/About/FAQ" element={<FAQ />} />
+              <Route path="/About/cite" element={<Cite />} />
+
               {/* ... other routes as needed ... */}
             </Routes>
           </div>
