@@ -46,10 +46,10 @@ def search_api():
     
     # Calling the mcid.compound_id function with the gathered data
     result = mcid.compound_id(input_val, adduct, tol, tol_unit, num_rxn)
-    
+    result['Hits'] = result['Hits'].str.replace('\n', '<br></br>')
+    table_html = result.to_html(classes='data', index=False, escape=False)
 
-
-    table_html = result.to_html(classes='data', index=False)
+    # table_html = result.to_html(classes='data', index=False)
     return jsonify({'tableHTML': table_html})
 
 
