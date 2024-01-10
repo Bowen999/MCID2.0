@@ -44,101 +44,6 @@ def cal_adduct(mz_values, adduct_type):
 
 
 
-# def search_in_db(exact_mass_list, tol, tol_unit, db):
-#     # Connect to the database
-#     conn = sqlite3.connect('mcid_1.db')
-#     cursor = conn.cursor()
-
-#     data = {"m/z": [], "Num. of Hits": [], "Hits": []}
-    
-#     for exact_mass in exact_mass_list:
-#         # Calculate error based on tolerance unit
-#         if tol_unit == "Da":
-#             error = tol
-#         elif tol_unit == "ppm":
-#             error = (tol / 1e6) * exact_mass
-#         else:
-#             raise ValueError("Invalid tol_unit. It should be either 'Da' or 'ppm'.")
-        
-#         # Set lower and upper bounds
-#         lower_bound = exact_mass - error
-#         upper_bound = exact_mass + error
-        
-#         # Query the database, using double quotes to escape the table name
-#         query = f'SELECT * FROM "{db}" WHERE exact_mass BETWEEN ? AND ?'
-#         cursor.execute(query, (lower_bound, upper_bound))
-#         matches = cursor.fetchall()
-        
-#         # Extract mcid and Name from the matches, and sort them by error value
-#         matches_sorted = sorted(matches, key=lambda x: abs(x[1] - exact_mass))
-#         hits = [f"{match[0]} ({match[13]})" for match in matches_sorted]
-        
-#         # Add to data
-#         data["m/z"].append(exact_mass)
-#         data["Num. of Hits"].append(len(hits))
-#         data["Hits"].append("\n".join(hits))
-    
-#     # Close the database connection
-#     conn.close()    
-    
-#     # Convert data to a DataFrame
-#     df = pd.DataFrame(data)
-    
-#     return df
-
-
-# def search_in_db(exact_mass_list, tol, tol_unit, db):
-#     # Connect to the database
-#     conn = sqlite3.connect('mcid_1.db')
-#     cursor = conn.cursor()
-
-#     data = {"m/z": [], "Num. of Hits": [], "Hits": []}
-    
-#     for exact_mass in exact_mass_list:
-#         # Calculate error based on tolerance unit
-#         if tol_unit == "Da":
-#             error = tol
-#         elif tol_unit == "ppm":
-#             error = (tol / 1e6) * exact_mass
-#         else:
-#             raise ValueError("Invalid tol_unit. It should be either 'Da' or 'ppm'.")
-        
-#         # Set lower and upper bounds
-#         lower_bound = exact_mass - error
-#         upper_bound = exact_mass + error
-        
-#         # Query the database, using double quotes to escape the table name
-#         query = f'SELECT * FROM "{db}" WHERE exact_mass BETWEEN ? AND ?'
-#         cursor.execute(query, (lower_bound, upper_bound))
-#         matches = cursor.fetchall()
-        
-#         # Extract mcid and Name from the matches, and sort them by error value
-#         matches_sorted = sorted(matches, key=lambda x: abs(x[1] - exact_mass))
-#         hits = [f"{match[0]} ({match[13]})" for match in matches_sorted]
-        
-#         # If there are no hits, append "No Match"
-#         if not hits:
-#             hits = ["No Match"]
-        
-#         # Add to data
-#         data["m/z"].append(exact_mass)
-#         data["Num. of Hits"].append(len(matches))  # Use matches instead of hits for the count
-#         data["Hits"].append("\n".join(hits))
-    
-#     # Close the database connection
-#     conn.close()    
-    
-#     # Convert data to a DataFrame
-#     df = pd.DataFrame(data)
-    
-#     return df
-
-import sqlite3
-import pandas as pd
-
-import sqlite3
-import pandas as pd
-
 def search_in_db(exact_mass_list, tol, tol_unit, db):
     # Connect to the database
     conn = sqlite3.connect('mcid_1.db')
@@ -164,8 +69,18 @@ def search_in_db(exact_mass_list, tol, tol_unit, db):
         cursor.execute(query, (lower_bound, upper_bound))
         matches = cursor.fetchall()
         
-        # Extract only mcid from the matches and make them hyperlinks
-        hits = [f"<a href='http://127.0.0.1:5000/compounds/{match[0]}'>{match[0]}</a>" for match in matches]
+        hits = []
+        for match in matches:
+            mcid = match[0]
+            if db == "0_rxn":
+                # Assuming the name is the second column in the match
+                name = match[1]
+                # Hyperlink only the mcid, not the name
+                hit = f"<a href='https://www.kegg.jp/entry/{mcid}'>{mcid}</a> ({name})"
+            else:
+                # Hyperlink to a local resource using mcid
+                hit = f"<a href='http://127.0.0.1:5000/compounds/{mcid}'>{mcid}</a>"
+            hits.append(hit)
         
         # If there are no hits, append "No Match"
         if not hits:
@@ -183,7 +98,6 @@ def search_in_db(exact_mass_list, tol, tol_unit, db):
     df = pd.DataFrame(data)
     
     return df
-
 
 
 

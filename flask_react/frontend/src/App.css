@@ -1,4 +1,8 @@
-/* ... your other styles ... */
+
+
+
+
+/* Base Styles */
 .App {
   text-align: center;
 }
@@ -7,37 +11,6 @@
   height: 40vmin;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(255, 255, 255);
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 ul {
   list-style-type: none;
@@ -69,15 +42,139 @@ li a.active {
   background-color: #ffffff;
   font-weight: bold;
 }
-/* Add this to your existing styles in App.css */
 
 .main-content {
-  padding: 20px; /* or any other value you prefer */
-  background-color: #f4f4f4; /* example light grey color, change to your preference */
-  box-shadow: 0px -5px 5px -5px rgba(0,0,0,0.1), /* top shadow */
-              0px 5px 5px -5px rgba(0,0,0,0.1); /* bottom shadow */
-  border-radius: 5px; /* to make the edges slightly rounded */
+  padding: 20px;
+  background-color: #f4f4f4;
+  box-shadow: 0px -5px 5px -5px rgba(0,0,0,0.1),
+              0px 5px 5px -5px rgba(0,0,0,0.1);
+  border-radius: 5px;
 }
+
 .header {
-  background-color: #2a0303; /* White color */
+  background-color: #2a0303;
+}
+
+.breathing {
+  animation: breathing 2s infinite;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  text-align: left;
+}
+
+.form-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.info-section {
+  flex: 1;
+}
+
+.mass-input-container {
+  margin-bottom: 20px;
+}
+
+.mass-label {
+  font-weight: bold;
+  color: #00720a;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.mass-textarea {
+  font-size: 16px;
+  width: 80%;
+  color: black;
+}
+
+/* Keyframes */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+    background-color: #04AA6D;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #02c059;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+  .search-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .form-section, .info-section {
+    margin-bottom: 5px;
+    flex: none; /* Reset flex values for mobile view */
+  }
+
+  .form-section textarea, .info-section input, .info-section select, .info-section .ant-radio-button-wrapper,
+  .form-section, .info-section, .info-section div, .info-section label, .info-section input, .info-section select {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mass-textarea {
+    width: 100%;
+  }
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-container-small {
+  flex-direction: column;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+}
+
+.contact-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-image img {
+  max-width: 80%;
+  height: auto;
+}
+
+.contact-image img.small-screen {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.contact-image img.large-screen {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.InfoTitle {
+  color: #00720A;
 }
