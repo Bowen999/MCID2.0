@@ -120,6 +120,52 @@ https://www.kegg.jp/entry/R00577
 https://www.kegg.jp/entry/R02959
 **+, - all works**
 
+### Mar 27
+
+**Addition of CO2** 
+```
+[pattern 1](https://www.kegg.jp/entry/R00005)
+[*:1][CH2]C(=O)O>>[*:1]C
+
+[pattern 2](https://www.kegg.jp/entry/R00449) 
+[*:1]C(~[*:2])C(=O)O>>[*:1]C[*:2]
+
+[pattern 3](https://www.kegg.jp/entry/R11917): is very similar to the pattern 1 but has one more =O, which can be handle by addition of  O; [*:1]C(~[*:2])C(=O)O>>[*:1]C(=O)[*:2]
+
+[pattern 4](https://www.kegg.jp/entry/R03508): using predict_products_group to do this
+subgroup = 'cccccc-C(=O)O'  # Target OH group on a ring
+smirks = '[*:1]-C(=O)O>>[*:1]'
+ [*:1]-C(=O)O>>[*:1]-O
+```
+**Loss of CO2**
+
+https://www.kegg.jp/entry/R00013
+
+https://www.kegg.jp/entry/R04885
+
+https://www.kegg.jp/entry/R04732
+
+
+
+### Apr 36 
+
+* **Down loss of CO2**
+* **loss or add H2 rules**
+
+N+ in 6 carbons ring (3 double bonds) are not recognized with SMARTS: https://www.kegg.jp/entry/R09508 or https://www.kegg.jp/entry/R00700
+
+
+
+two double bounds >> one double bond:
+
+https://www.kegg.jp/entry/R02965
+
+https://www.kegg.jp/entry/R03025
+
+https://www.kegg.jp/entry/R09095
+
+
+
 
 
 # Rxn Rules
@@ -127,4 +173,8 @@ https://www.kegg.jp/entry/R02959
 | R26  | sulfate conjugation | only considers 6 C ring (based on ChatGPT examples), but Hao's result only considers 5C ring. |
 | ---- | ---- | ---- |
 |      |      |      |
+
+
+
+
 
