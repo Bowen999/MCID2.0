@@ -147,14 +147,14 @@ https://www.kegg.jp/entry/R04732
 
 
 
-### Apr 36 
+## Apr
+
+### Apr 06 
 
 * **Down loss of CO2**
-* **loss or add H2 rules**
+* **loss or add H2 rules**:
 
 N+ in 6 carbons ring (3 double bonds) are not recognized with SMARTS: https://www.kegg.jp/entry/R09508 or https://www.kegg.jp/entry/R00700
-
-
 
 two double bounds >> one double bond:
 
@@ -164,8 +164,67 @@ https://www.kegg.jp/entry/R03025
 
 https://www.kegg.jp/entry/R09095
 
+### Apr 8
+
+* loss of NH3:
+```
+pattern 1:
+https://www.kegg.jp/entry/R09253
+pattern 2:
+https://www.kegg.jp/entry/R11328
+pattern 3:
+https://www.kegg.jp/entry/R03030
+pattern 4:
+https://www.kegg.jp/entry/R05758, https://www.kegg.jp/entry/R01544, https://www.kegg.jp/entry/R00996
+pattern 5:
+https://www.kegg.jp/entry/R00223
+pattern 6 (-NH2 >> -OH):
+https://www.kegg.jp/entry/R05170
+```
+
+* Addition of NH3 is 
+```
+pattern: [*:1]C=O>>[*:1](O)CN
+pattern: [*:1]=[*:2]C([*:3])>>[*:1][*:2](-N)C(=[*:3])O
+pattern: [*:1](=O)C[*:2]>>[*:1](-N)C(-O)[*:2]
+```
 
 
+
+
+
+loss O2/addition O2:
+https://www.kegg.jp/entry/R04857
+smirks = '[*:1]-O>>[*:1]-[NH2]'
+[*:1]-[NH2]>>[*:1]-O
+
+
+
+*addition of H20:*
+
+=O <-> -NH2
+https://www.kegg.jp/entry/R00729
+https://www.kegg.jp/entry/R00688
+pattern 2:
+https://www.kegg.jp/entry/R00132
+pattern 3:
+https://www.kegg.jp/entry/R01234
+pattern 4:
+https://www.kegg.jp/entry/R01335
+
+
+
+*loss O:*
+-OH >> empty
+https://www.kegg.jp/entry/R00713
+https://www.kegg.jp/entry/R01296
+
+```
+smirks = '[*:1]=[*:2](-N)>>[*:1][*:2](=O)
+https://www.kegg.jp/entry/R03887
+
+loss of 
+```
 
 
 # Rxn Rules
