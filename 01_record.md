@@ -209,7 +209,7 @@ pattern 2:
 https://www.kegg.jp/entry/R00132
 pattern 3:
 https://www.kegg.jp/entry/R01234
-pattern 4:
+pattern 4 (unavailable):
 https://www.kegg.jp/entry/R01335
 
 
@@ -219,12 +219,60 @@ https://www.kegg.jp/entry/R01335
 https://www.kegg.jp/entry/R00713
 https://www.kegg.jp/entry/R01296
 
+
+
+### Apr 10
+
+* **down R01 (dehydrogenation) & R02 (hydrogenation):**
+
 ```
+Hydrogenation:
+[*:1][O-]>>[*:1][O]
+[*:1][n]>>[*:1][N+]
+[*:1]-C=C-[*:2]>>[*:1]-C-C-[*:2]
+[*:1]=[O]>>[*:1]O
+[*:1]-[c]=[n]>>[*:1]-c-n
+[C:1]#[C]>>[C:1]=C
+[C:1]=[CH2]>>[C:1]-C
+
+Hehydrogenation:
+[*:1][O]>>[*:1][O-]
+[*:1][n+]>>[*:1][N]
+[*:1]-C-C-[*:2]>>[*:1]-C=C-[*:2]
+[*:1]=[O]>>[*:1]O
+[*:1]-c-n>>[*:1]-[c]=[n]
+[C:1]=C>>[C:1]#[C]
+[C:1]-C>>[C:1]=[CH2]
+
+Reference: https://en.wikipedia.org/wiki/Hydrogenation
+```
+*can not do this: https://www.nad.com/nad-vs-nadcan not do this: https://www.nad.com/nad-vs-nad`h*
+
+
+
+
+
+* **down R11 and R12 (loss/addition of water) (without considering dropping a water and connect)**
+
+```
+loss of water
+smirks = '[P:1]-[OH0]>>[P:1][OH]'
+https://www.kegg.jp/entry/R01234
+
+addition of Water
 smirks = '[*:1]=[*:2](-N)>>[*:1][*:2](=O)
 https://www.kegg.jp/entry/R03887
-
-loss of 
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 # Rxn Rules
