@@ -290,6 +290,7 @@ substrate = 'CCCC(N)CCC'
 smirks = '[*:1]-[NH2]>>[*:1]-N=N'
 mass_difference = '+'
 ```
+**Add a PubChem Lite test demo**
 
 
 
