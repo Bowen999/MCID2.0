@@ -250,8 +250,6 @@ Reference: https://en.wikipedia.org/wiki/Hydrogenation
 
 
 
-
-
 * **down R11 and R12 (loss/addition of water) (without considering dropping a water and connect)**
 
 ```
@@ -266,7 +264,32 @@ https://www.kegg.jp/entry/R03887
 
 
 
+### Apr 11
 
+**R15&R16 loss of C2H4 addition of C2H4**
+```
+-C2H, -OH, -Br, Cl >> *-C2H4
+substrate = 'CCCC(O)CCCC'
+smirks = '[C:1]-[OH]>>[C:1]OCC'
+mass_difference = '+'
+
+substrate = 'CCCCOCC'
+smirks = '[*:1]-[CH2]-[CH3]>>[*:1]'
+mass_difference = '-'
+```
+
+
+**R05&R06 loss of NH/addition of NH**
+```
+substrate = 'CCCC(N=N)CCC'
+smirks = '[*:1]([NH2])-[*:2]>>[*:1]-[*:2]'
+smirks = '[N:1]=[N:2]>>[N:1]'
+mass_difference = '-'
+
+substrate = 'CCCC(N)CCC'
+smirks = '[*:1]-[NH2]>>[*:1]-N=N'
+mass_difference = '+'
+```
 
 
 
