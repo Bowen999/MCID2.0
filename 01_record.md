@@ -164,6 +164,8 @@ https://www.kegg.jp/entry/R03025
 
 https://www.kegg.jp/entry/R09095
 
+
+
 ### Apr 8
 
 * loss of NH3:
@@ -188,8 +190,6 @@ pattern: [*:1]C=O>>[*:1](O)CN
 pattern: [*:1]=[*:2]C([*:3])>>[*:1][*:2](-N)C(=[*:3])O
 pattern: [*:1](=O)C[*:2]>>[*:1](-N)C(-O)[*:2]
 ```
-
-
 
 
 
@@ -294,8 +294,27 @@ mass_difference = '+'
 
 
 
+### Apr 16
 
+* **Down R07 loss of oxygen/R08 addition of oxygen**
+* **Down R13 loss of CO/R14 addition of CO**
+```
+-COOH <-> -OH
+```
+* **Correct R44 addition of D-ribose**
+```
+substrate = 'C1=CN=CN=C1'
+smirks = '[n:1]1cnccc1>>[n+:1]1(c2c(O)c(O)c(CO)o2)cnccc1'
+smirks = '[n:1]1ccccc1>>[n+:1]1(c2c(O)c(O)c(CO)o2)ccccc' #R02137     
 
+substrate = 'CC(CCNC1=NC=NC2=C1NC=N2)CO'
+smirks = '[nH1:1]1c2[*:2][*:3][*:4][*:5]c2nc1>>[n:1]1(c3c(O)c(O)c(CO)o3)c2[*:2][*:3][*:4][*:5]c2nc1' #R08074 
+
+substrate = 'C1=NC(=C2C(=N1)N(C=N2)C3C(C(C(O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N'
+smirks = '[*:1]-P(=O)([OH1])[OH1]>>[*:1]-P(=O)(O)c1c(O)c(O)c(CO)o1' # R01051 
+mass_difference = '+'
+```
+* **Correct R68/70/72 addition of AMP, ATP, ADP**
 
 
 
