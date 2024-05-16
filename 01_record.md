@@ -316,6 +316,13 @@ mass_difference = '+'
 ```
 * **Correct R68/70/72 addition of AMP, ATP, ADP**
 
+# May
+
+### May 15
+
+* complete unrelated compounds list
+* 3 new rxn need to be added: Deamination, Transamination, loss/add CDP, and one possible: oxidative cyclization: https://www.kegg.jp/entry/R01481
+
 
 
 # Rxn Rules
